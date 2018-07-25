@@ -14,6 +14,10 @@ CharacterVector sliceToChar(grpc_slice slice){
   const_cast<char *>(reinterpret_cast<const char *>(
       GRPC_SLICE_START_PTR(slice)));
 
+  int n = GRPC_SLICE_LENGTH(slice);
+  data[n] = '\0';
+  RGRPC_LOG("Slice2Char:\nn: " << n << "\nData: " << data);
+
   CharacterVector out(1);
   out[0] = data;
 
